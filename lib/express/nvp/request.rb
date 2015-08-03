@@ -11,7 +11,7 @@ module Express
       }
 
       def self.endpoint
-        if Paypal.sandbox?
+        if Express.sandbox?
           ENDPOINT[:sandbox]
         else
           ENDPOINT[:production]
@@ -19,7 +19,7 @@ module Express
       end
 
       def initialize(attributes = {})
-        @version = Paypal.api_version
+        @version = Express.api_version
         super
       end
 
@@ -54,7 +54,7 @@ module Express
         when 'Success', 'SuccessWithWarning'
           response
         else
-          raise Exception::APIError.new(response)
+          raise Exception::APIError.new(response).message
         end
       rescue RestClient::Exception => e
         raise Exception::HttpError.new(e.http_code, e.message, e.http_body)

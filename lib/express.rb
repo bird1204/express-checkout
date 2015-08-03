@@ -1,4 +1,4 @@
-require 'express/checkout/version'
+require 'express/version'
 require 'logger'
 require 'active_support'
 require 'active_support/core_ext'
@@ -8,7 +8,7 @@ require 'rest_client'
 
 module Express
   mattr_accessor :api_version
-  self.api_version = '88.0'
+  self.api_version = '124.0'
 
   ENDPOINT = {
     production: 'https://www.paypal.com/cgi-bin/webscr',
@@ -21,16 +21,16 @@ module Express
 
   def self.endpoint
     if sandbox?
-      Paypal::ENDPOINT[:sandbox]
+      Express::ENDPOINT[:sandbox]
     else
-      Paypal::ENDPOINT[:production]
+      Express::ENDPOINT[:production]
     end
   end
   def self.popup_endpoint
     if sandbox?
-      Paypal::POPUP_ENDPOINT[:sandbox]
+      Express::POPUP_ENDPOINT[:sandbox]
     else
-      Paypal::POPUP_ENDPOINT[:production]
+      Express::POPUP_ENDPOINT[:production]
     end
   end
 
@@ -59,27 +59,27 @@ module Express
   self.sandbox = false
 end
 
-require 'paypal/util'
-require 'paypal/exception'
-require 'paypal/exception/http_error'
-require 'paypal/exception/api_error'
-require 'paypal/base'
-require 'paypal/ipn'
-require 'paypal/nvp/request'
-require 'paypal/nvp/response'
-require 'paypal/payment/common/amount'
-require 'paypal/express/request'
-require 'paypal/express/response'
-require 'paypal/payment/request'
-require 'paypal/payment/request/item'
-require 'paypal/payment/response'
-require 'paypal/payment/response/info'
-require 'paypal/payment/response/item'
-require 'paypal/payment/response/payer'
-require 'paypal/payment/response/reference'
-require 'paypal/payment/response/refund'
-require 'paypal/payment/response/address'
-require 'paypal/payment/recurring'
-require 'paypal/payment/recurring/activation'
-require 'paypal/payment/recurring/billing'
-require 'paypal/payment/recurring/summary'
+require 'express/util'
+require 'express/exception'
+require 'express/exception/http_error'
+require 'express/exception/api_error'
+require 'express/base'
+require 'express/ipn'
+require 'express/nvp/request'
+require 'express/nvp/response'
+require 'express/payment/common/amount'
+require 'express/checkout/request'
+require 'express/checkout/response'
+require 'express/payment/request'
+require 'express/payment/request/item'
+require 'express/payment/response'
+require 'express/payment/response/info'
+require 'express/payment/response/item'
+require 'express/payment/response/payer'
+require 'express/payment/response/reference'
+require 'express/payment/response/refund'
+require 'express/payment/response/address'
+require 'express/payment/recurring'
+require 'express/payment/recurring/activation'
+require 'express/payment/recurring/billing'
+require 'express/payment/recurring/summary'

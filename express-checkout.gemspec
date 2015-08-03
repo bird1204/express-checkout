@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Wei-Yi Chiu"]
   spec.email         = ["bird1204@gmail.com"]
 
-  spec.summary       = %q{papal express-checkout gem}
-  spec.description   = %q{papal express-checkout gem}
+  spec.summary       = %q{paypal express-checkout gem}
+  spec.description   = %q{paypal express-checkout gem}
   spec.homepage      = "https://github.com/bird1204"
   spec.license       = "MIT"
 

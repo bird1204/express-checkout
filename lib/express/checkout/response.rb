@@ -1,5 +1,5 @@
 module Express
-  module Check
+  module Checkout
     class Response < NVP::Response
       attr_accessor :pay_on_paypal, :mobile
 
@@ -10,13 +10,13 @@ module Express
       end
 
       def redirect_uri
-        endpoint = URI.parse Paypal.endpoint
+        endpoint = URI.parse Express.endpoint
         endpoint.query = query(:with_cmd).to_query
         endpoint.to_s
       end
 
       def popup_uri
-        endpoint = URI.parse Paypal.popup_endpoint
+        endpoint = URI.parse Express.popup_endpoint
         endpoint.query = query.to_query
         endpoint.to_s
       end

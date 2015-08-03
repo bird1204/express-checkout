@@ -81,7 +81,7 @@ module Express
 
           # warn ignored params
           attrs.each do |key, value|
-            Paypal.log "Ignored Parameter (#{self.class}): #{key}=#{value}", :warn
+            Express.log "Ignored Parameter (#{self.class}): #{key}=#{value}", :warn
           end
         end
 

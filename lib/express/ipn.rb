@@ -1,7 +1,7 @@
 module Express
   module IPN
     def self.endpoint
-      _endpoint_ = URI.parse Paypal.endpoint
+      _endpoint_ = URI.parse Express.endpoint
       _endpoint_.query = {
         cmd: '_notify-validate'
       }.to_query
