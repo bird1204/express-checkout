@@ -22,7 +22,51 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+init with your account
+
+    @request = Express::Checkout::Request.new(
+      username: your_user_name,
+      password: your_password,
+      signature: your_signature
+    )
+
+create a new payment
+
+    payment_request = Express::Payment::Request.new(
+        currency_code: :TWD,
+        description: your_description,
+        quantity: 1,
+        amount: 999,
+        custom_fields: {
+          CARTBORDERCOLOR: 'C00000',
+          LOGOIMG: 'https://example.com/logo.png'
+        }
+    )
+    @response = @request.setup(
+      payment_request,
+      return_URL,
+      client_back_URL
+    )
+
+checkout
+
+    payment_request = Express::Payment::Request.new(
+        currency_code: :TWD,
+        description: your_description,
+        quantity: 1,
+        amount: 999,
+        custom_fields: {
+          CARTBORDERCOLOR: 'C00000',
+          LOGOIMG: 'your_logo_url'
+        }
+    )
+    response = @request.checkout!(
+        token,
+        PayerID,
+        payment_request
+    )
+    
+
 
 ## Development
 
